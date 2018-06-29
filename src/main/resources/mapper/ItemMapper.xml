@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.gerion.mapper.ItemMapper">
+
+
+
+	<insert id="insertItem" parameterType="kr.co.gerion.vo.ItemVO">
+        <![CDATA[
+            INSERT  
+              INTO jrpr_item
+                   (
+					admisu_yn
+					,halt_yn
+					,idx_ind_midclss_cd
+					,item_cd
+					,item_name
+					,item_srt_cd
+					,kospi_yn
+					,kospi100_yn
+					,kospi50_yn
+					,list_dd
+					,list_shrs
+					,lwlmtprc
+					,market_cd
+					,mfind_yn
+					,midclss_name
+					,now_prc
+					,prevdd_clsprc
+					,reg_dt
+					,sme_yn
+					,uplmtprc
+					,eps
+					,per
+					,pbr
+					,bps
+					,dps
+					,div_yd
+					)
+            VALUES (
+					#{admisuYn}
+					,#{haltYn}
+					,#{idxIndMidclssCd}
+					,#{itemCd}
+					,#{itemName}
+					,#{itemSrtCd}
+					,#{kospiYn}
+					,#{kospi100Yn}
+					,#{kospi50Yn}
+					,#{listDd}
+					,#{listShrs}
+					,#{lwlmtprc}
+					,#{marketCd}
+					,#{mfindYn}
+					,#{midclssName}
+					,#{nowPrc}
+					,#{prevddClsprc}
+					,now()
+					,#{smeYn}
+					,#{uplmtprc}
+					,#{eps}
+					,#{per}
+					,#{pbr}
+					,#{bps}
+					,#{dps}
+					,#{divYd}
+					)
+        ]]>
+    </insert>
+
+
+	<select id="selectItemListCountBySearchword" parameterType="java.util.Map" resultType="int">
+            SELECT 
+          		count(*)
+             FROM jrpr_item
+             WHERE 1=1 
+             and item_name like concat('%',#{searchWord},'%') 
+    </select>
+
+
+
+	<select id="selectItemListBySearchword" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		a.admisu_yn
+              ,a.halt_yn
+              ,a.idx
+              ,a.idx_ind_midclss_cd
+              ,a.item_cd
+              ,a.item_name
+              ,a.item_srt_cd
+              ,a.kospi_yn
+              ,a.kospi100_yn
+              ,a.kospi50_yn
+              ,a.list_dd
+              ,a.list_shrs
+              ,a.lwlmtprc
+              ,a.market_cd
+              ,a.mfind_yn
+              ,a.midclss_name
+              ,a.now_prc
+              ,a.prevdd_clsprc
+              ,a.reg_dt
+              ,a.sme_yn
+              ,a.uplmtprc
+              ,a.eps
+			  ,a.per
+			  ,a.pbr
+			  ,a.bps
+			  ,a.dps
+			  ,a.div_yd
+              ,b.interest_item_id
+             FROM jrpr_item a left outer join jrpr_interest_item b
+             on a.item_cd = b.item_cd
+             and b.user_id=#{userId}
+             WHERE 1=1 
+             and a.item_name like concat('%',#{searchWord},'%') 
+             order by idx asc
+    </select>
+    
+    
+    <select id="selectItemListBySearchwordAndItemCd" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		a.admisu_yn
+              ,a.halt_yn
+              ,a.idx
+              ,a.idx_ind_midclss_cd
+              ,a.item_cd
+              ,a.item_name
+              ,a.item_srt_cd
+              ,a.kospi_yn
+              ,a.kospi100_yn
+              ,a.kospi50_yn
+              ,a.list_dd
+              ,a.list_shrs
+              ,a.lwlmtprc
+              ,a.market_cd
+              ,a.mfind_yn
+              ,a.midclss_name
+              ,a.now_prc
+              ,a.prevdd_clsprc
+              ,a.reg_dt
+              ,a.sme_yn
+              ,a.uplmtprc
+              ,a.eps
+			  ,a.per
+			  ,a.pbr
+			  ,a.bps
+			  ,a.dps
+			  ,a.div_yd
+              ,b.interest_item_id
+             FROM jrpr_item a left outer join jrpr_interest_item b
+             on a.item_cd = b.item_cd
+             and b.user_id=#{userId}
+             WHERE 1=1 
+             and (a.item_name like concat('%',#{searchWord},'%') or a.item_srt_cd like concat('%',#{searchWord},'%')) 
+             order by idx asc
+    </select>
+    
+    
+    
+	<select id="selectItemByItemSrtCd" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		a.admisu_yn
+              ,a.halt_yn
+              ,a.idx
+              ,a.idx_ind_midclss_cd
+              ,a.item_cd
+              ,a.item_name
+              ,a.item_srt_cd
+              ,a.kospi_yn
+              ,a.kospi100_yn
+              ,a.kospi50_yn
+              ,a.list_dd
+              ,a.list_shrs
+              ,a.lwlmtprc
+              ,a.market_cd
+              ,a.mfind_yn
+              ,a.midclss_name
+              ,a.now_prc
+              ,a.prevdd_clsprc
+              ,a.reg_dt
+              ,a.sme_yn
+              ,a.uplmtprc
+              ,a.eps
+			  ,a.per
+			  ,a.pbr
+			  ,a.bps
+			  ,a.dps
+			  ,a.div_yd
+              ,b.interest_item_id
+             FROM jrpr_item a left outer join jrpr_interest_item b
+             on a.item_cd = b.item_cd
+             and b.user_id=#{userId}
+             WHERE 1=1 
+             and a.market_cd = #{marketCd}
+             and a.item_srt_cd = #{itemSrtCd}
+    </select>
+
+
+  	<select id="selectItemList" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		*
+             FROM jrpr_item
+             WHERE 1=1 
+             and market_cd = #{marketCd}
+             order by idx asc
+    </select>
+    
+    
+      <update id="updateItem" parameterType="kr.co.gerion.vo.ItemVO">
+            UPDATE 
+                   jrpr_item
+               SET 
+					admisu_yn=#{admisuYn}
+					,halt_yn = #{haltYn}
+					,idx_ind_midclss_cd = #{idxIndMidclssCd}
+					,kospi_yn = #{kospiYn}
+					,kospi100_yn = #{kospi100Yn}
+					,kospi50_yn = #{kospi50Yn}
+					,list_dd = #{listDd}
+					,list_shrs = #{listShrs}
+					,lwlmtprc = #{lwlmtprc}
+					,mfind_yn = #{mfindYn}
+					,prevdd_clsprc = #{prevddClsprc}
+					,sme_yn = #{smeYn}
+					,uplmtprc = #{uplmtprc}
+					,eps = #{eps}
+					,per = #{per}
+					,pbr = #{pbr}
+					,bps = #{bps}
+					,dps = #{dps}
+					,div_yd = #{divYd}
+             WHERE 1=1
+             	and item_srt_cd = #{itemSrtCd}
+             	and market_cd = #{marketCd}
+    </update>
+    
+    
+    <insert id="insertMidClsCd" parameterType="java.util.HashMap">
+        <![CDATA[
+            INSERT  
+              INTO jrpr_midclss_cd
+                   (
+					koscom_midclss_cd
+					,market_cd
+					,midclss_cd
+					,midclss_name
+					,reg_dt
+					)
+            VALUES (
+					#{koscomMidclssCd}
+					,#{marketCd}
+					,#{midclssCd}
+					,#{midclssName}
+					,now()
+					)
+        ]]>
+    </insert>
+    
+    
+    
+  	<select id="selectAdminList" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		admin_id
+				,admin_name
+				,admin_pwd
+				,admin_status
+				,control_grade
+				,idx
+				,main_menu
+				,reg_dt
+				,access_dt
+          		,date_format(reg_dt,'%Y-%m-%d') as reg_dt_str
+        		,CASE DAYOFWEEK(reg_dt) WHEN '1' THEN '일' WHEN '2' THEN '월' WHEN '3' THEN '화' WHEN '4' THEN '수' WHEN '5' THEN '목' WHEN '6' THEN '금' WHEN '7' THEN '토' END as d_o_w
+        		,date_format(reg_dt,'%H:%i:%s') as reg_dt_si
+        		,date_format(access_dt,'%Y-%m-%d') as access_dt_str
+        		,CASE DAYOFWEEK(access_dt) WHEN '1' THEN '일' WHEN '2' THEN '월' WHEN '3' THEN '화' WHEN '4' THEN '수' WHEN '5' THEN '목' WHEN '6' THEN '금' WHEN '7' THEN '토' END as access_dt_d_o_w
+        		,date_format(access_dt,'%H:%i:%s') as access_dt_si
+             FROM ca_admin
+             WHERE 1=1 
+             order by reg_dt desc
+           <!--   LIMIT #{startRownum}, #{numOfRows} -->
+    </select>  
+    
+      	<select id="selectAdminListCount" parameterType="java.util.Map" resultType="int">
+            SELECT 
+          		count(*)
+             FROM ca_admin
+             WHERE 1=1
+    </select>  
+     
+    
+ 
+    <update id="updateAdmin" parameterType="java.util.Map">
+            UPDATE 
+                   ca_admin
+               SET 
+					admin_name=#{adminName}
+					,admin_pwd=password(#{adminPwd})
+					,admin_status=#{adminStatus}
+					,control_grade=#{controlGrade}
+					,main_menu=#{mainMenu}
+             WHERE 1=1
+             	and admin_id = #{adminId}
+    </update>
+ 
+    
+    <update id="updateAdminAccessDt" parameterType="java.util.HashMap">
+            UPDATE 
+                   ca_admin
+               SET 
+         		 access_dt=now()              
+             WHERE 1=1
+             	and admin_id = #{adminId}
+    </update>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</mapper>
+

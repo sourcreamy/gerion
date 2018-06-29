@@ -1,0 +1,183 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%
+
+%>
+
+<!DOCTYPE html>
+<html lang="ko">      
+<jsp:include page="/WEB-INF/views/jsp/common-header.jsp"></jsp:include>
+    
+<body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="content-container">
+            <jsp:include page="/WEB-INF/views/jsp/common-top.jsp"></jsp:include>
+
+            <div class="view-option">
+                <ul>
+                    <li class="option interest">
+                        <a href="/interest/interest.do">관심종목</a>  
+                    </li>
+                    <li class="option advisor txt-bold">
+                        <a href="/main/home.do">어드바이저</a> 
+                    </li>
+                    <li class="option  research ">
+                        <a href="/research/news.do">리서치</a> 
+                    </li>
+                </ul>
+            </div>
+
+            <div class="list-option">
+                <ul>
+                    <li class="active"><a href="#">홈</a></li>
+                    <li><a href="profile.do">리처드 개리</a></li>
+                    <li><a href="#">알렉스 강</a></li>
+                    <li><a href="#">피터 린치</a></li>
+                    <li><a href="#">피터 린치</a></li>
+                </ul>
+            </div>
+
+            <div class="recent-recommend content-box">
+                <a href="#" class="title withchev">
+                    최근 추천 종목
+                </a>
+                <div class="recommend-box">
+                    <div class="company-box">
+                        <span class="name">신라젠</span>
+                        <span class="sub-info">2018/03/26 리처드 개리</span>
+                        <span class="percent-box">+26.75%</span>
+                    </div>
+                    <div class="company-box">
+                        <span class="name">사주스탁</span>
+                        <span class="sub-info">2018/03/02	 알렉스 강</span>
+                        <span class="percent-box">+14.24%</span>
+                    </div>
+                    <div class="company-box">
+                        <span class="name">삼성전자</span>
+                        <span class="sub-info">2018/02/18	 피터 린치</span>
+                        <span class="percent-box">+26.75%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recommended-advisor content-box">
+                <span class="title">
+                    어드바이저
+                </span>
+                <div class="advisor-box">
+                    <div class="info-box">
+                        <span class="imgholder">
+                            <img src="" alt="">
+                        </span>
+                    </div>
+                    <div class="info-box">
+                        <span class="name">리처드 개리</span>
+                        <div class="tags">
+                            <span class="tag">#재무재표</span>
+                            <span class="tag">#중소형주</span>
+                            <span class="tag">#변동성</span>
+                        </div>
+                        <div class="recent-box">
+                            <span class="recent">
+                                최근 한달 TOP
+                            </span>
+                            <span class="name">
+                                LG디스플레이
+                            </span>
+                            <span class="percent">
+                                +1.05%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="advisor-box">
+                    <div class="info-box">
+                        <span class="imgholder">
+                            <img src="" alt="">
+                        </span>
+                    </div>
+                    <div class="info-box">
+                        <span class="name">피터 린치</span>
+                        <div class="tags">
+                            <span class="tag">#펀더맨탈</span>
+                            <span class="tag">#수급중심</span>
+                            <span class="tag">#종목분석</span>
+                        </div>
+                        <div class="recent-box">
+                            <span class="recent">
+                                최근 한달 TOP
+                            </span>
+                            <span class="name">
+                                대동스틸
+                            </span>
+                            <span class="percent">
+                                +26.75%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="footer-logo-holder text-center">
+                    <img src="/img/footer-logo.png" alt="">
+                </div>
+            </footer>
+        </div>
+
+        <div class="modal-holder active">
+            <div class="modal-content-holder terms-rights">
+                <div class="terms-content">
+                    <div class="content-header">
+                        <span>
+                            주락펴락 안정적 사용을 위한
+                            필수 접근권한 허용
+                        </span>
+                    </div>
+                    <div class="content-body">
+                        <ul>
+                            <li>
+                                <span class="txt-bold">저장공간 (필수)</span>
+                                <p>종목정보, 사용자 설정 등을 위해 <br> 필요한 권한</p>
+                            </li>
+                            <li>
+                                <span class="txt-bold">알림 (필수)</span>
+                                <p>실시간 시세정보, 리서치 정보 등을 <br> 전달하기 위해 필요한 권한</p>
+                            </li>
+                            <li>
+                                <span class="txt-bold">기기 및 앱기록 (필수)</span>
+                                <p>앱 구동과 업데이트를 위해 필요한 권한</p>
+                            </li>
+                            <li>
+                                <span class="txt-bold">통화</span>
+                                <p>휴대전화 상태 및 ID읽기에 필요한 권한</p>
+                            </li>
+                            <li>
+                                <span class="txt-bold">기기 ID 및 통화 정보</span>
+                                <p>휴대전화 상태 및 ID읽기에 필요한 권한</p>
+                            </li>
+                            <li>
+                                <span class="txt-bold">사진/영상/파일</span>
+                                <p>USB저장소의 콘텐츠 읽기, 수정, <br> 삭제에 필요한 권한</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-footer clearfix">
+                        <a href="#" class="txt-bold btn-exit-app">앱종료</a>
+                        <a href="#" class="txt-bold btn-confirm">확인</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>      <script src="/js/vendor/bootstrap.min.js"></script>       
+    <!-- veiwport for countnumber -->
+    <script src="http://gfplant.com/js/jquery.viewportchecker.js"></script>    
+    <script src="/js/main.js"></script>       
+    </body>
+</html>

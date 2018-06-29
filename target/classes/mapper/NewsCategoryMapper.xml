@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.gerion.mapper.NewsCategoryMapper">
+
+  	<select id="selectNewsCategoryList" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		*
+             FROM jrpr_news_category
+             WHERE 1=1 
+    </select>
+
+	 <insert id="insertNewsCategory" parameterType="kr.co.gerion.vo.NewsCategoryVO">
+        <![CDATA[
+            INSERT  
+              INTO jrpr_news_category
+                   (
+					news_category_id
+					,news_category_name
+					,reg_dt
+					)
+            VALUES (
+					#{newsCategoryId}
+					,#{newsCategoryName}
+					,now()
+					)
+        ]]>
+    </insert>
+
+
+    
+    
+    
+    
+</mapper>
+

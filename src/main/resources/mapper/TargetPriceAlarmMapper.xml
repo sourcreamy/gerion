@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.gerion.mapper.TargetPriceAlarmMapper">
+
+  	<select id="selectTargetPriceAlarm" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		achievement_dt
+				,achievement_yn
+				,idx
+				,interest_item_id
+				,item_cd
+				,item_name
+				,item_srt_cd
+				,reg_dt
+				,target_number
+				,target_price
+				,target_price_alarm_id
+				,user_id
+             FROM jrpr_target_price_alarm
+             WHERE 1=1 
+             and user_id = #{userId}
+             and interest_item_id = #{interestItemId}
+             and target_price_alarm_id = #{targetPriceAlarmId}
+    </select>
+    
+      	<select id="selectTargetPriceAlarmList" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		achievement_dt
+				,achievement_yn
+				,idx
+				,interest_item_id
+				,item_cd
+				,item_name
+				,item_srt_cd
+				,reg_dt
+				,target_number
+				,target_price
+				,target_price_alarm_id
+				,user_id
+             FROM jrpr_target_price_alarm
+             WHERE 1=1 
+             and user_id = #{userId}
+             and interest_item_id = #{interestItemId}
+    </select>
+    
+    
+     <update id="deleteTargetPriceAlarmList" parameterType="java.util.Map">
+            delete from
+                   jrpr_target_price_alarm
+             WHERE 1=1
+             	and interest_item_id = #{interestItemId}
+             	and user_id = #{userId}
+    </update>
+    
+	 <update id="deleteTargetPriceAlarm" parameterType="java.util.Map">
+            delete from
+                   jrpr_target_price_alarm
+             WHERE 1=1
+             	and target_price_alarm_id = #{targetPriceAlarmId}
+             	and user_id = #{userId}
+    </update>
+
+
+
+	 <insert id="insertTargetPriceAlarm" parameterType="kr.co.gerion.vo.TargetPriceAlarmVO">
+        <![CDATA[
+            INSERT  
+              INTO jrpr_target_price_alarm
+                   (
+					achievement_dt
+					,achievement_yn
+					,interest_item_id
+					,item_cd
+					,item_name
+					,item_srt_cd
+					,reg_dt
+					,target_number
+					,target_price
+					,target_price_alarm_id
+					,user_id
+					)
+            VALUES (
+					#{achievementDt}
+					,#{achievementYn}
+					,#{interestItemId}
+					,#{itemCd}
+					,#{itemName}
+					,#{itemSrtCd}
+					,now()
+					,#{targetNumber}
+					,#{targetPrice}
+					,#{targetPriceAlarmId}
+					,#{userId}
+					)
+        ]]>
+    </insert>
+
+
+    
+</mapper>
+

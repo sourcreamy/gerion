@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+
+<properties>
+	<!-- jndi settings -->
+	<entry key="jndiName">java:/comp/env/jdbc/oracle</entry>
+	<!-- Jdbc settings -->
+	<entry key="jdbc.driverClass">com.mysql.jdbc.Driver</entry> 
+<!-- 
+	<entry key="jdbc.url">jdbc:mysql://zzang-dev.iptime.org:3306/fantasyball2?allowMultiQueries=true</entry>
+	<entry key="jdbc.username">fantasyball</entry>
+	<entry key="jdbc.password">fantasyball</entry>
+
+ -->
+	<entry key="jdbc.url">jdbc:mysql://13.125.232.126:3306/zoolock?allowMultiQueries=true</entry>
+	<entry key="jdbc.username">zoolock</entry>
+	<entry key="jdbc.password">zoolock$$(</entry>
+	
+  
+	<!-- <entry key="jdbc.url">jdbc:mysql://133.186.134.34:3306/fantasyball?allowMultiQueries=true</entry>
+	<entry key="jdbc.username">fantasyball</entry>
+	<entry key="jdbc.password">vksxkwlqhf!!$(</entry> -->
+
+
+</properties>

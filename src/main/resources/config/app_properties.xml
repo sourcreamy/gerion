@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+
+<properties>
+	<!-- <entry key="upload.base.path">/home/tomcat/total_delivery/files</entry> -->
+	<entry key="upload.base.path">D:/development/source/pickball/src/main/webapp/files</entry>
+	<entry key="upload.file.ext">hwp,xls,xlsx,ppt,pptx,doc,docx,txt,zip,mp3,pdf</entry>
+	<entry key="upload.image.ext">jpg,jpeg,gif,png</entry>
+	
+	<!-- 카카오 api 연동관련 -->
+	<entry key="RestApiKey">277a32547c7c92f4f1592a6691307b80</entry>
+	<entry key="Redirect_URI">http://localhost:8080/kakao/kakaoLogin.do</entry>
+	
+	
+	<!-- 신용카드 및 무통장 입금 코드 -->
+	<entry key="clientid">icelight</entry>
+	<entry key="strKeyID">d24b9bc0652d80fe</entry>
+	<entry key="strEncKey">3ac64eda334a9142728edd2a8dac7861</entry>
+	<entry key="strKeyVer">001</entry>
+	<entry key="KeyValueHash">a00259fa63f53303b97e9990b6185d4d1c893992aaba0efb224a019d72847292</entry>
+	<entry key="creditCard">POQCARD12</entry>
+	<entry key="virtualPayment">INIVACCT01</entry>
+	<entry key="notiurl">https://www.fantasyball.co.kr/ticket/notiUrl.do</entry>
+<!-- 	<entry key="notiurl">http://localhost:8080/ticket/notiUrl.do</entry> -->
+	
+	<entry key="closeURL">https://www.fantasyball.co.kr/ticket/close.do</entry>
+<!-- 	<entry key="closeURL">http://211.51.74.175:3392/ticket/close.do</entry> -->
+	
+	<entry key="grCode">HGILT00030</entry>		<!--휴대폰 결제 코드  -->
+	<entry key="cpCode">HCILTN13L0</entry>
+	
+	<entry key="LGD_MERTKEY">4f1aed7fb2d94a595bf8939e63f7b30d</entry>
+	<entry key="CST_MID">DM_icelight</entry>
+	<!-- 
+	<entry key="CST_PLATFORM">test</entry>
+	 -->
+	<entry key="CST_PLATFORM">test</entry> 
+	<!-- <entry key="configPath">C:/Users/ymjang/Documents/workspace-sts-3.7.2.RELEASE/fantasyBall_front/src/main/webapp/WEB-INF/lgdacom</entry> -->
+	<entry key="configPath">D:/development/source/fantasyBall_front/src/main/webapp/WEB-INF/lgdacom</entry>
+</properties>

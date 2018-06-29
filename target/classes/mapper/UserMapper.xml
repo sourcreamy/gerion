@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.gerion.mapper.UserMapper">
+
+  	<select id="selectUser" parameterType="java.util.Map" resultType="java.util.HashMap">
+            SELECT 
+          		*
+             FROM jrpr_user
+             WHERE 1=1 
+             and user_id = #{userId}
+             LIMIT 0,1
+    </select>
+
+	 <insert id="insertUser" parameterType="kr.co.gerion.vo.UserVO">
+        <![CDATA[
+            INSERT  
+              INTO jrpr_user
+                   (
+					access_dt
+					,access_token
+					,adviser_yn
+					,expires_in
+					,main_menu
+					,refresh_token
+					,reg_dt
+					,thumbnail_image_url
+					,token_type
+					,user_grade
+					,user_id
+					,user_nick
+					,user_role
+					,user_status
+					)
+            VALUES (
+					now()
+					,#{accessToken}
+					,#{adviserYn}
+					,#{expiresIn}
+					,#{mainMenu}
+					,#{refreshToken}
+					,now()
+					,#{thumbnailImageUrl}
+					,#{tokenType}
+					,#{userGrade}
+					,#{userId}
+					,#{userNick}
+					,#{userRole}
+					,#{userStatus}
+					)
+        ]]>
+    </insert>
+
+
+    
+    
+    
+    
+</mapper>
+
